@@ -1,4 +1,4 @@
-<div align="center">TypeScript</div>
+<h1 align="center">TypeScript</h1>
 
 This project serves as a comprehensive learning resource for understanding various fundamental concepts in TypeScript. Upon completion of this project, you will gain proficiency in the following areas without relying on external sources like Google:
 
