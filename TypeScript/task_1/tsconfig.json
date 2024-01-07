@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es2018",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "lib": ["es2018", "dom"]
+  },
+  "exclude": [
+    "node_modules/@types/babel__traverse",
+    "node_modules/@types/node/ts4.8/test.d.ts"
+  ]
+}
