@@ -2,12 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
-    entry: './js/dashboard_main.js',
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public'),
-    },
     module: {
         rules: [
             {
@@ -16,7 +10,15 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                type: 'asset/resource',
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true, // option to disable during development
+                        },
+                    },
+                ],
             },
         ],
     },
