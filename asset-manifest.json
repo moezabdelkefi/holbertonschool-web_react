@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/holbertonschool-web_react/static/css/main.b9f98f52.css",
+    "main.js": "/holbertonschool-web_react/static/js/main.c00f1ba6.js",
+    "static/media/HolbertonLogo.jpg": "/holbertonschool-web_react/static/media/HolbertonLogo.24bab5d633e36ca8d17e.jpg",
+    "index.html": "/holbertonschool-web_react/index.html",
+    "main.b9f98f52.css.map": "/holbertonschool-web_react/static/css/main.b9f98f52.css.map",
+    "main.c00f1ba6.js.map": "/holbertonschool-web_react/static/js/main.c00f1ba6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9f98f52.css",
+    "static/js/main.c00f1ba6.js"
+  ]
+}
