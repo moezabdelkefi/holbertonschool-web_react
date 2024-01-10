@@ -14,12 +14,11 @@ function App() {
         <div className="form-group">
           <label htmlFor="email">Email: </label>
           <input type="email" id="email" />
-        </div>
-        <div className="form-group">
+
           <label htmlFor="password">Password: </label>
           <input type="password" id="password" />
+          <button>OK</button>
         </div>
-        <button>OK</button>
       </div>
       <div className="App-footer">
         Copyright {getFullYear()} - {getFooterCopy(true)}
