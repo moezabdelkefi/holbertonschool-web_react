@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import App from "./App";
 import React from 'react';
 import { Notifications } from "../Notifications/Notifications";
@@ -29,5 +29,21 @@ describe("<App />", () => {
     it('contains the Footer component', () => {
         const wrapper = shallow(<App />);
         expect(wrapper.contains(<Footer />)).toEqual(true);
+    });
+    it('calls logOut and alert when "Control" and "h" are pressed', () => {
+        const logOut = jest.fn();
+        global.alert = jest.fn();
+
+        const wrapper = mount(<App logOut={logOut} />);
+
+        // Simulate 'Control' and 'h' keys pressed
+        wrapper.simulate('keydown', { key: 'h', ctrlKey: true });
+
+        expect(logOut).toHaveBeenCalled();
+        expect(global.alert).toHaveBeenCalledWith('Logging you out');
+
+        // Clean up
+        wrapper.unmount();
+        global.alert.mockRestore();
     });
 });
