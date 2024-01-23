@@ -19,7 +19,7 @@ Props are passed to a component as attributes in JSX. The child component can th
 
 ### Example:
 
-<img src="https://raw.githubusercontent.com/moezabdelkefi/holbertonschool-web_react/main/assets/113900578/ec014faf-e84b-4934-8754-2f8ced250193.png" alt="code1" width="200"/>
+![code1](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/b3afbb1c-de43-44ab-b507-64112cfd77c0 {width=40px})
 
 
 ## Default Props
