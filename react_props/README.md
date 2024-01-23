@@ -19,7 +19,7 @@ Props are passed to a component as attributes in JSX. The child component can th
 
 ### Example:
 
-![code1](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/b3afbb1c-de43-44ab-b507-64112cfd77c0 {width=40px})
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/b3afbb1c-de43-44ab-b507-64112cfd77c0" width=50%>
 
 
 ## Default Props
@@ -27,7 +27,7 @@ Default props provide a way to set default values for props in case they are not
 
 ### Example:
 
-![code2](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/63f96756-966b-41e8-8c66-d3d8f0b1cd04 | width=100)
+![code2](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/63f96756-966b-41e8-8c66-d3d8f0b1cd04)
 
 In this example, if the greeting prop is not provided by the parent component, the default value 'Default Greeting' will be used.
 
