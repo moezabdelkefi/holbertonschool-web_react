@@ -1,4 +1,4 @@
-<h1>React Props Guide</h1>
+<h1 align="center">React Props Guide</h1>
 
 ## Introduction
 This guide provides an overview of using React props to pass data from parent to child components. Understanding and utilizing React props is essential for building modular and reusable React applications.
@@ -19,7 +19,7 @@ Props are passed to a component as attributes in JSX. The child component can th
 
 ### Example:
 
-![code1](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/ec014faf-e84b-4934-8754-2f8ced250193)
+<img src="https://raw.githubusercontent.com/moezabdelkefi/holbertonschool-web_react/main/assets/113900578/ec014faf-e84b-4934-8754-2f8ced250193.png" alt="code1" width="200"/>
 
 
 ## Default Props
