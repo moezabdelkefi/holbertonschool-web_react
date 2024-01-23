@@ -19,7 +19,7 @@ Props are passed to a component as attributes in JSX. The child component can th
 
 ### Example:
 
-<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/b3afbb1c-de43-44ab-b507-64112cfd77c0" width=50%>
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/b3afbb1c-de43-44ab-b507-64112cfd77c0" width=50% align="center">
 
 
 ## Default Props
@@ -27,7 +27,7 @@ Default props provide a way to set default values for props in case they are not
 
 ### Example:
 
-![code2](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/63f96756-966b-41e8-8c66-d3d8f0b1cd04)
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/63f96756-966b-41e8-8c66-d3d8f0b1cd04" width=50% align="center">
 
 In this example, if the greeting prop is not provided by the parent component, the default value 'Default Greeting' will be used.
 
@@ -36,18 +36,18 @@ PropTypes are used to specify the data type and requirements for each prop, help
 
 ### Example:
 
-![code3](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/9ac099a7-0fa7-4b24-865a-d3c6270044aa)
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/9ac099a7-0fa7-4b24-865a-d3c6270044aa" width=50% align="center">
 
 In this example, PropTypes.string.isRequired ensures that the greeting prop must be a string and is required.
 
 ### Examples
 
-![code4](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/a1f47a08-ff70-4787-9c59-0a328a6cf42b)
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/a1f47a08-ff70-4787-9c59-0a328a6cf42b" width=50% align="center">
 
 
 ## Default Props
 
-![code5](https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/5b1887c0-867e-45aa-b9e0-1ff435744026)
+<img src="https://github.com/moezabdelkefi/holbertonschool-web_react/assets/113900578/5b1887c0-867e-45aa-b9e0-1ff435744026" width=50% align="center">
 
 
 ## Best Practices
