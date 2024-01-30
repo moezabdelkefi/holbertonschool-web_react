@@ -50,18 +50,21 @@ class App extends React.Component {
 
 
   render() {
+    const { displayDrawer, listCourses } = this.state;
     return (
       <React.Fragment>
         <div className={css(styles.body)}>
-          <Notifications displayDrawer={this.state.displayDrawer}
+          <Notifications
+            displayDrawer={displayDrawer}
             handleDisplayDrawer={this.handleDisplayDrawer}
-            handleHideDrawer={this.handleHideDrawer} />
+            handleHideDrawer={this.handleHideDrawer}
+          />
           <Header />
           <BodySectionWithMarginBottom title='Log in to continue'>
             <Login />
           </BodySectionWithMarginBottom>
           <BodySectionWithMarginBottom title='Course list'>
-            <CourseList listCourses={this.state.listCourses} />
+            <CourseList listCourses={listCourses} />
           </BodySectionWithMarginBottom>
           <BodySection title='News from the School'>
             <p>Some random text</p>
