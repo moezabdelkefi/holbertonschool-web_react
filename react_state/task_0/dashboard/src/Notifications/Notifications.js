@@ -48,8 +48,6 @@ class Notifications extends Component {
         this.markAsRead = this.markAsRead.bind(this);
     }
 
-    handleDisplayDrawer = () => { };
-
     shouldComponentUpdate(nextProps) {
         return nextProps.listNotifications.length > this.props.listNotifications.length;
     }
@@ -101,17 +99,10 @@ class Notifications extends Component {
 }
 
 Notifications.propTypes = {
+    displayDrawer: PropTypes.bool,
+    listNotifications: PropTypes.arrayOf(NotificationItemShape),
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
-    listNotifications: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number,
-        type: PropTypes.string,
-        value: PropTypes.string,
-        html: PropTypes.shape({
-            __html: PropTypes.string,
-        }),
-    })),
-    displayDrawer: PropTypes.bool,
 };
 
 Notifications.defaultProps = {
