@@ -55,7 +55,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className={css(styles.body)}>
           <Notifications
-            displayDrawer={displayDrawer}
+            {...this.state}
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
           />
@@ -71,7 +71,7 @@ class App extends React.Component {
           </BodySection>
           <Footer className={css(styles.footer)} />
         </div>
-      </React.Fragment >
+      </React.Fragment>
     );
   }
 }
