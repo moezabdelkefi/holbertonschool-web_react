@@ -20,6 +20,11 @@ describe("<Notifications />", () => {
         const wrapper = shallow(<Notifications displayDrawer={true} />);
         expect(wrapper.find(".Notifications").exists()).toEqual(true);
     });
+    it('should have handleDisplayDrawer and handleHideDrawer as functions', () => {
+        const wrapper = shallow(<Notifications />);
+        expect(typeof wrapper.prop('handleDisplayDrawer')).toBe('function');
+        expect(typeof wrapper.prop('handleHideDrawer')).toBe('function');
+    });
     test('markAsRead is called with the right id', () => {
         const consoleSpy = jest.spyOn(console, 'log');
         const { getByText } = render(<Notifications />);
@@ -27,4 +32,5 @@ describe("<Notifications />", () => {
         expect(consoleSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
         consoleSpy.mockRestore();
     });
+
 });
