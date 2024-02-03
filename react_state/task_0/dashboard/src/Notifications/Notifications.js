@@ -57,7 +57,7 @@ class Notifications extends Component {
     }
 
     render() {
-        const { displayDrawer, handleDisplayDrawer, handleHideDrawer, listNotifications } = this.props;
+        const { handleDisplayDrawer, handleHideDrawer, listNotifications } = this.props;
 
         return (
             <div className={css(styles.notifications)} onClick={handleDisplayDrawer}>
@@ -99,7 +99,6 @@ class Notifications extends Component {
 }
 
 Notifications.propTypes = {
-    displayDrawer: PropTypes.bool,
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
     listNotifications: PropTypes.arrayOf(PropTypes.shape({
@@ -110,6 +109,7 @@ Notifications.propTypes = {
             __html: PropTypes.string,
         }),
     })),
+    displayDrawer: PropTypes.bool,
 };
 
 Notifications.defaultProps = {
