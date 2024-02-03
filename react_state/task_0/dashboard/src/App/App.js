@@ -55,7 +55,7 @@ class App extends React.Component {
       <React.Fragment>
         <div className={css(styles.body)}>
           <Notifications
-            {...this.state}
+            displayDrawer={displayDrawer}
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
           />
