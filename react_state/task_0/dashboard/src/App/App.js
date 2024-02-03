@@ -78,10 +78,12 @@ class App extends React.Component {
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
+  displayDrawer: PropTypes.bool
 };
 
 App.defaultProps = {
   isLoggedIn: false,
+  displayDrawer: false,
 };
 
 export default App;
