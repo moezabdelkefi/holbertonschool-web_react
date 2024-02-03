@@ -50,7 +50,7 @@ class App extends React.Component {
 
 
   render() {
-    const { displayDrawer, listCourses } = this.state;
+    const { displayDrawer } = this.state;
     return (
       <React.Fragment>
         <div className={css(styles.body)}>
