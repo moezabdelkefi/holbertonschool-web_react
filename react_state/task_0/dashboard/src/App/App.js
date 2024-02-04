@@ -50,6 +50,7 @@ class App extends React.Component {
 
 
   render() {
+
     const { displayDrawer } = this.state;
     return (
       <React.Fragment>
@@ -64,7 +65,7 @@ class App extends React.Component {
             <Login />
           </BodySectionWithMarginBottom>
           <BodySectionWithMarginBottom title='Course list'>
-            <CourseList listCourses={listCourses} />
+            <CourseList listCourses={this.state.listCourses} />
           </BodySectionWithMarginBottom>
           <BodySection title='News from the School'>
             <p>Some random text</p>
