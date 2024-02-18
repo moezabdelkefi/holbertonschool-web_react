@@ -1,15 +1,30 @@
+import { normalize, schema } from 'normalizr';
 import * as data from '../../notifications.json';
 
-export function getAllNotificationsByUser(userId) {
-    const { notifications } = data.default;
+const user = new schema.Entity('users');
 
-    let result = [];
-    for (const key in notifications) {
-        const notification = notifications[key];
-        if (notification.author.id === userId) {
-            result.push(notification.context);
-        }
+const message = new schema.Entity(
+    'messages',
+    {},
+    { idAttribute: 'guid' }
+);
+
+const notification = new schema.Entity(
+    'notifications',
+    {
+        author: user,
+        context: message,
     }
+);
 
-    return result;
-}
+const normalizedData = normalize(data.default, [notification]);
+
+export const getAllNotificationsByUser = (userId) => {
+    const { notifications } = normalizedData.entities;
+
+    return Object.values(notifications).filter(
+        (notification) => notification.author === userId
+    ).map((notification) => notification.context);
+};
+
+export default normalizedData;
