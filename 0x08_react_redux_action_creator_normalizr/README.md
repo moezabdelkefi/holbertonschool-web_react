@@ -13,10 +13,3 @@ This project showcases the use of Redux action creators along with Normalizr to 
 Redux Action Creators: Implementing Redux action creators to manage asynchronous data fetching and state updates.
 Normalizr Integration: Utilizing Normalizr to normalize nested API responses and maintain a normalized state structure.
 Component Rendering: Demonstrating the rendering of React components based on the normalized state stored in the Redux store.
-
-Modify Redux action creators (actions.js) to fetch data from your API endpoints.
-Define entity schemas using Normalizr (schemas.js) to normalize your API responses.
-Update Redux reducers (reducers.js) to handle normalized data updates in the Redux store.
-Modify React components (components/) to render data from the Redux store as needed.
-Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
