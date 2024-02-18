@@ -1,4 +1,4 @@
-<center> React Redux Action Creator + Normalizr</center>
+<h1 align="center">React Redux Action Creator + Normalizr</h1>
 This project demonstrates the integration of React, Redux, and Normalizr for efficient state management and data normalization within a React application.
 
 ## Overview
