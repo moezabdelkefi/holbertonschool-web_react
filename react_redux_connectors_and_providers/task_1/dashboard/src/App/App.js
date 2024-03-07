@@ -105,7 +105,7 @@ class App extends Component {
         <AppContext.Provider value={{ user, logOut: this.logOut }}>
           <div className={css(styles.body)}>
             <Notifications
-              displayDrawer={displayDrawer} // Use props instead of state
+              displayDrawer={displayDrawer}
               handleDisplayDrawer={this.handleDisplayDrawer}
               handleHideDrawer={this.handleHideDrawer}
               listNotifications={listNotifications}
