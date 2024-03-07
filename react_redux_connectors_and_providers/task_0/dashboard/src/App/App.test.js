@@ -5,6 +5,7 @@ import { Notifications } from "../Notifications/Notifications";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import { mapStateToProps } from './index.js';
 
 describe("<App />", () => {
     it("App renders without crashing", () => {
@@ -60,5 +61,16 @@ describe("<App />", () => {
         wrapper.instance().handleDisplayDrawer(); // first set it to true
         wrapper.instance().handleHideDrawer(); // then set it back to false
         expect(wrapper.state().displayDrawer).toEqual(false);
+    });
+    describe('mapStateToProps', () => {
+        it('should return the right object when passing state', () => {
+            let state = fromJS({
+                uiReducer: {
+                    isUserLoggedIn: true
+                }
+            });
+
+            expect(mapStateToProps(state)).toEqual({ isLoggedIn: true });
+        });
     });
 });
