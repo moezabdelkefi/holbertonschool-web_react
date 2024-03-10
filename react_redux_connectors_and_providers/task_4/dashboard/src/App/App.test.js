@@ -37,4 +37,13 @@ describe("<App />", () => {
         };
         expect(mapStateToProps(state)).toEqual(expectedOutput);
     });
+    it('should return the right object when passing state', () => {
+        let state = fromJS({
+            ui: {
+                isUserLoggedIn: true
+            }
+        });
+
+        expect(mapStateToProps(state)).toEqual({ isLoggedIn: true });
+    });
 });
