@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
@@ -45,25 +44,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listCourses: [
-        { id: 1, name: 'ES6', credit: 60 },
-        { id: 2, name: 'Webpack', credit: 20 },
-        { id: 3, name: 'React', credit: 40 },
-      ],
       user: {
         email: '',
         password: '',
         isLoggedIn: false,
-      },
-      listNotifications: [
-        { id: 1, type: 'default', value: 'New course available' },
-        { id: 2, type: 'urgent', value: 'New resume available' },
-        { id: 3, type: 'urgent', html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' } },
-      ],
+      }
     };
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
   }
 
   logIn(email, password) {
@@ -86,23 +74,13 @@ class App extends Component {
     });
   }
 
-  markNotificationAsRead(id) {
-    const updatedNotifications = this.state.listNotifications.filter(notification => notification.id !== id);
-    this.setState({ listNotifications: updatedNotifications });
-  }
-
   render() {
-    const { displayDrawer, user, listNotifications, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { user } = this.state;
 
     return (
       <React.Fragment>
         <AppContext.Provider value={{ user, logOut: this.logOut }}>
           <div className={css(styles.body)}>
-            <Notifications
-              displayDrawer={displayDrawer}
-              listNotifications={listNotifications}
-              markNotificationAsRead={this.markNotificationAsRead}
-            />
             <Header />
             <BodySectionWithMarginBottom title='Log in to continue'>
               <Login logIn={this.logIn} />
@@ -124,14 +102,12 @@ class App extends Component {
 App.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   displayDrawer: PropTypes.bool.isRequired,
-  listNotifications: PropTypes.array.isRequired,
   listCourses: PropTypes.array.isRequired,
   displayNotificationDrawer: PropTypes.func.isRequired,
   hideNotificationDrawer: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
-  listNotifications: [],
   listCourses: [],
 };
 
