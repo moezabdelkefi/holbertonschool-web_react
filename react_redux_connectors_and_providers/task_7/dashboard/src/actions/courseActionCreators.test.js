@@ -1,14 +1,21 @@
-import { selectCourse, unSelectCourse } from './courseActionCreators';
-import { SELECT_COURSE, UNSELECT_COURSE } from './courseActionTypes';
+import { fetchCourses } from './courseActionCreators';
+import { FETCH_COURSE_SUCCESS } from './courseActionTypes';
 
-describe('courseActionCreators', () => {
-    it('selectCourse returns the correct action', () => {
-        const action = selectCourse(1);
-        expect(action).toEqual({ type: SELECT_COURSE, index: 1 });
-    });
+describe('fetchCourses', () => {
+    it('fetches courses and dispatches FETCH_COURSE_SUCCESS action', () => {
+        const mockDispatch = jest.fn();
+        const mockCourses = [{ id: 1, name: 'Course 1' }];
 
-    it('unSelectCourse returns the correct action', () => {
-        const action = unSelectCourse(1);
-        expect(action).toEqual({ type: UNSELECT_COURSE, index: 1 });
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                json: () => Promise.resolve(mockCourses),
+            })
+        );
+
+        const expectedAction = { type: FETCH_COURSE_SUCCESS, data: mockCourses };
+
+        return fetchCourses()(mockDispatch).then(() => {
+            expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+        });
     });
 });
