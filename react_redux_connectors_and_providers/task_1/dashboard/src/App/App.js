@@ -50,7 +50,6 @@ class App extends Component {
         { id: 2, name: 'Webpack', credit: 20 },
         { id: 3, name: 'React', credit: 40 },
       ],
-      displayDrawer: false,
       user: {
         email: '',
         password: '',
@@ -62,19 +61,9 @@ class App extends Component {
         { id: 3, type: 'urgent', html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' } },
       ],
     };
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
-  }
-
-  handleDisplayDrawer() {
-    this.setState({ displayDrawer: true });
-  }
-
-  handleHideDrawer() {
-    this.setState({ displayDrawer: false });
   }
 
   logIn(email, password) {
@@ -111,8 +100,6 @@ class App extends Component {
           <div className={css(styles.body)}>
             <Notifications
               displayDrawer={displayDrawer}
-              handleDisplayDrawer={this.handleDisplayDrawer}
-              handleHideDrawer={this.handleHideDrawer}
               listNotifications={listNotifications}
               markNotificationAsRead={this.markNotificationAsRead}
             />
@@ -121,7 +108,7 @@ class App extends Component {
               <Login logIn={this.logIn} />
             </BodySectionWithMarginBottom>
             <BodySectionWithMarginBottom title='Course list'>
-              <CourseList listCourses={this.state.listCourses} />
+              <CourseList listCourses={this.props.listCourses} />
             </BodySectionWithMarginBottom>
             <BodySection title='News from the School'>
               <p>Some random text</p>
@@ -135,15 +122,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  displayDrawer: PropTypes.bool,
+  isLoggedIn: PropTypes.bool.isRequired,
+  displayDrawer: PropTypes.bool.isRequired,
+  listNotifications: PropTypes.array.isRequired,
+  listCourses: PropTypes.array.isRequired,
   displayNotificationDrawer: PropTypes.func.isRequired,
   hideNotificationDrawer: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
-  isLoggedIn: false,
-  displayDrawer: false,
+  listNotifications: [],
+  listCourses: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
