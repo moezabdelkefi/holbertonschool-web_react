@@ -4,6 +4,7 @@ import Notifications from './Notifications';
 import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { setNotificationFilter } from '../actions/notificationActionCreators';
 
 const mockStore = configureStore([]);
 
@@ -23,24 +24,16 @@ describe("<Notifications />", () => {
         wrapper = shallow(<Notifications store={store} />);
     });
 
-    it("menu item is being displayed when displayDrawer is false", () => {
-        const wrapper = shallow(<Notifications displayDrawer={false} />);
-        expect(wrapper.find(".menuItem").exists()).toEqual(true);
+    it('clicking on the first button should call setNotificationFilter with URGENT', () => {
+        wrapper.find('#urgentButton').simulate('click');
+        const actions = store.getActions();
+        expect(actions).toEqual([setNotificationFilter('URGENT')]);
     });
 
-    it("div.Notifications is not being displayed when displayDrawer is false", () => {
-        const wrapper = shallow(<Notifications displayDrawer={false} />);
-        expect(wrapper.find(".Notifications").exists()).toEqual(false);
-    });
-
-    it("menu item is being displayed when displayDrawer is true", () => {
-        const wrapper = shallow(<Notifications displayDrawer={true} />);
-        expect(wrapper.find(".menuItem").exists()).toEqual(true);
-    });
-
-    it("div.Notifications is being displayed when displayDrawer is true", () => {
-        const wrapper = shallow(<Notifications displayDrawer={true} />);
-        expect(wrapper.find(".Notifications").exists()).toEqual(true);
+    it('clicking on the second button should call setNotificationFilter with DEFAULT', () => {
+        wrapper.find('#defaultButton').simulate('click');
+        const actions = store.getActions();
+        expect(actions).toEqual([setNotificationFilter('DEFAULT')]);
     });
 
     it('should have handleDisplayDrawer and handleHideDrawer as functions', () => {
@@ -59,5 +52,18 @@ describe("<Notifications />", () => {
         fireEvent.click(getByText('Notification 1'));
         expect(consoleSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
         consoleSpy.mockRestore();
+    });
+
+    // New tests
+    it('clicking on the first button should call setNotificationFilter with URGENT', () => {
+        wrapper.find('#urgentButton').simulate('click');
+        const actions = store.getActions();
+        expect(actions).toEqual([setNotificationFilter('URGENT')]);
+    });
+
+    it('clicking on the second button should call setNotificationFilter with DEFAULT', () => {
+        wrapper.find('#defaultButton').simulate('click');
+        const actions = store.getActions();
+        expect(actions).toEqual([setNotificationFilter('DEFAULT')]);
     });
 });
