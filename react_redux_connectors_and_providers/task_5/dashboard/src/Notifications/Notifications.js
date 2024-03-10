@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import NotificationItem from './NotificationItem';
-import NotificationItemShape from './NotificationItemShape';
 import closeIcon from '../assets/close-icon.png';
 import { StyleSheet, css } from 'aphrodite';
 import { connect } from 'react-redux';
@@ -21,25 +20,8 @@ const styles = StyleSheet.create({
         margin: '0',
         marginTop: '15px',
     },
-    defaultNotification: {
-        color: 'blue',
-    },
-    urgentNotification: {
-        color: 'red',
-    },
     menuItem: {
         textAlign: 'right',
-    },
-    panel: {
-        '@media (max-width: 900px)': {
-            position: 'fixed',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            padding: 0,
-            fontSize: '20px',
-        },
     },
 });
 
@@ -47,11 +29,12 @@ class Notifications extends PureComponent {
     componentDidMount() {
         this.props.fetchNotifications();
     }
+
     render() {
-        const { handleDisplayDrawer, handleHideDrawer, listNotifications, markNotificationAsRead } = this.props;
+        const { listNotifications, markNotificationAsRead } = this.props;
 
         return (
-            <div className={css(styles.notifications)} onClick={handleDisplayDrawer}>
+            <div className={css(styles.notifications)}>
                 <button
                     style={{
                         background: "transparent",
@@ -60,7 +43,7 @@ class Notifications extends PureComponent {
                         right: 20,
                     }}
                     aria-label="Close"
-                    onClick={handleHideDrawer}
+                    onClick={this.props.hideNotificationDrawer}
                 >
                     <img className={css(styles.buttonImg)} src={closeIcon} alt="Close" />
                 </button>
@@ -82,7 +65,6 @@ class Notifications extends PureComponent {
                                     {html ? <div dangerouslySetInnerHTML={html} /> : null}
                                 </NotificationItem>
                             ))}
-
                         </ul>
                     </div>
                 )}
@@ -92,8 +74,6 @@ class Notifications extends PureComponent {
 }
 
 Notifications.propTypes = {
-    handleDisplayDrawer: PropTypes.func,
-    handleHideDrawer: PropTypes.func,
     listNotifications: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.number,
         type: PropTypes.string,
@@ -102,16 +82,13 @@ Notifications.propTypes = {
             __html: PropTypes.string,
         }),
     })),
-    displayDrawer: PropTypes.bool,
-    markNotificationAsRead: PropTypes.func,
+    markNotificationAsRead: PropTypes.func.isRequired,
+    fetchNotifications: PropTypes.func.isRequired,
+    hideNotificationDrawer: PropTypes.func.isRequired,
 };
 
 Notifications.defaultProps = {
-    displayDrawer: false,
     listNotifications: [],
-    handleDisplayDrawer: () => { },
-    handleHideDrawer: () => { },
-    markNotificationAsRead: () => { },
 };
 
 const mapStateToProps = (state) => {
