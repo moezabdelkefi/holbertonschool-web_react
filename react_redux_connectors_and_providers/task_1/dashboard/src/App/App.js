@@ -10,7 +10,7 @@ import BodySection from "../BodySection/BodySection";
 import { StyleSheet, css } from 'aphrodite';
 import AppContext from './AppContext';
 import { connect } from 'react-redux';
-
+import { displayNotificationDrawer, hideNotificationDrawer } from './actions/uiActionCreators';
 
 const mapStateToProps = (state) => {
   return {
@@ -19,11 +19,16 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer,
+};
+
 const styles = StyleSheet.create({
   body: {
-    fontfamily: 'Arial, sans-serif',
-    margintop: 50,
-    marginleft: 30,
+    fontFamily: 'Arial, sans-serif',
+    marginTop: 50,
+    marginLeft: 30,
   },
   footer: {
     position: 'absolute',
@@ -98,7 +103,7 @@ class App extends Component {
   }
 
   render() {
-    const { displayDrawer, user, listNotifications } = this.state;
+    const { displayDrawer, user, listNotifications, displayNotificationDrawer, hideNotificationDrawer } = this.props;
 
     return (
       <React.Fragment>
@@ -132,6 +137,8 @@ class App extends Component {
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
   displayDrawer: PropTypes.bool,
+  displayNotificationDrawer: PropTypes.func.isRequired,
+  hideNotificationDrawer: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
@@ -139,4 +146,4 @@ App.defaultProps = {
   displayDrawer: false,
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
