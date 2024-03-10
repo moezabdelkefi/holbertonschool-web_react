@@ -4,6 +4,8 @@ import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 import closeIcon from '../assets/close-icon.png';
 import { StyleSheet, css } from 'aphrodite';
+import { connect } from 'react-redux';
+import { fetchNotifications } from '../actions/notificationActionCreators';
 
 const styles = StyleSheet.create({
     notifications: {
@@ -42,6 +44,9 @@ const styles = StyleSheet.create({
 });
 
 class Notifications extends PureComponent {
+    componentDidMount() {
+        this.props.fetchNotifications();
+    }
     render() {
         const { handleDisplayDrawer, handleHideDrawer, listNotifications, markNotificationAsRead } = this.props;
 
@@ -109,4 +114,14 @@ Notifications.defaultProps = {
     markNotificationAsRead: () => { },
 };
 
-export default Notifications;
+const mapStateToProps = (state) => {
+    return {
+        listNotifications: state.notifications.get('messages'),
+    };
+};
+
+const mapDispatchToProps = {
+    fetchNotifications,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
