@@ -25,9 +25,9 @@ describe('With CourseList containing elements', () => {
 
     beforeEach(() => {
         const listCourses = [
-            { id: 1, name: 'ES6', credit: 60 },
-            { id: 2, name: 'Webpack', credit: 20 },
-            { id: 3, name: 'React', credit: 40 },
+            { id: '1', name: 'ES6', credit: '60' },
+            { id: '2', name: 'Webpack', credit: '20' },
+            { id: '3', name: 'React', credit: '40' },
         ];
         const rendered = render(<CourseList listCourses={listCourses} />);
         getAllByRole = rendered.getAllByRole;

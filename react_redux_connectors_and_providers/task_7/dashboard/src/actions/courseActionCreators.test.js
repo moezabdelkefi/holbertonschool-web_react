@@ -18,4 +18,4 @@ describe('fetchCourses', () => {
             expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
         });
     });
-});
+}); 

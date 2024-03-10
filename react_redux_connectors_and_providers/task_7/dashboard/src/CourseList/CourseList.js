@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CourseListRow from './CourseListRow';
 import { StyleSheet, css } from 'aphrodite';
-
+import { connect } from 'react-redux';
+import { fetchCourses, selectCourse, unSelectCourse } from '../actions/courseActionCreators';
+import { getListCourses } from '../selectors/courseSelector';
 
 const styles = StyleSheet.create({
     courseList: {
@@ -23,7 +25,20 @@ const styles = StyleSheet.create({
         fontFamily: 'sans-serif',
     },
 });
-const CourseList = ({ listCourses = [] }) => {
+
+const CourseList = ({ listCourses = [], fetchCourses, selectCourse, unSelectCourse }) => {
+    useEffect(() => {
+        fetchCourses();
+    }, [fetchCourses]);
+
+    const onChangeRow = (id, checked) => {
+        if (checked) {
+            selectCourse(id);
+        } else {
+            unSelectCourse(id);
+        }
+    };
+
     return (
         <table className={css(styles.courseList)}>
             <thead>
@@ -40,6 +55,8 @@ const CourseList = ({ listCourses = [] }) => {
                             isHeader={false}
                             textFirstCell={course.name}
                             textSecondCell={course.credit}
+                            isChecked={course.isSelected}
+                            onChangeRow={(checked) => onChangeRow(course.id, checked)}
                         />
                     ))
                 )}
@@ -51,14 +68,19 @@ const CourseList = ({ listCourses = [] }) => {
 CourseList.propTypes = {
     listCourses: PropTypes.arrayOf(
         PropTypes.shape({
+            id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            credit: PropTypes.number.isRequired,
+            credit: PropTypes.string.isRequired,
+            isSelected: PropTypes.bool.isRequired,
         })
     ),
+    fetchCourses: PropTypes.func.isRequired,
+    selectCourse: PropTypes.func.isRequired,
+    unSelectCourse: PropTypes.func.isRequired,
 };
 
-CourseList.defaultProps = {
-    listCourses: [],
-};
+const mapStateToProps = (state) => ({
+    listCourses: getListCourses(state),
+});
 
-export default CourseList;
+export default connect(mapStateToProps, { fetchCourses, selectCourse, unSelectCourse })(CourseList);
